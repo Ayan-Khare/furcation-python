@@ -40,10 +40,10 @@ os.makedirs(MODEL_DIR, exist_ok=True)
 
 # Google Drive file IDs (Replace these with actual file IDs)
 MODEL_FILES = {
-    "DenseNet201_FT.h5": "1viJkoqpHkQedtPo3dfxsnyyTIiiVlGlO",
-    "boneloss_marker.h5": "1BIpY_zH4ySlhjEe0nCzXYhUjgyGPr3Qa",
-    "furcation_marker.h5": "1xJ3cAhCvnMxKeBiMim7_IS5RkiOOgQi_",
-    "teeth_extractor.pt": "1GJszJvwMVH1oYFrdVhVqaMHoqvf9bp1c",
+    "DenseNet201_FT.h5": "18JqRnwNbXi62nzO9breETYBfWp8fATkc",
+    "boneloss_marker.h5": "1f5QgSmSp0M84MS4EBDyVl7gA4eWOrCCI",
+    "furcation_marker.h5": "1rOueC7X4YaEjXW9JCT4dpt-unRUZ2WSV",
+    "teeth_extractor.pt": "1QsVbNx3njdwEeSnJukOn4FRqBL9n8uQV",
 }
 
 def download_model(model_name, file_id):
