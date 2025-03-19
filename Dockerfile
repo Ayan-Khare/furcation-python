@@ -1,23 +1,22 @@
-# Use an official lightweight Python image
-FROM python:3.12
+# Use a lightweight version of Python
+FROM python:3.12-slim
 
-# Set the working directory inside the container
+# Set the working directory
 WORKDIR /app
 
-# Copy the requirements file and install dependencies
+# Copy and install dependencies with cache optimization
 COPY requirements.txt .
 
-# Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Install system dependencies and Python requirements
+RUN apt-get update && apt-get install -y libgl1 \
+    && pip install --no-cache-dir -r requirements.txt \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install OpenGL libraries for OpenCV
-RUN apt-get update && apt-get install -y libgl1
-
-# Copy the FastAPI app code
+# Copy only the necessary application files
 COPY main.py .
 
-# Expose port 8000 for FastAPI
+# Expose FastAPI port
 EXPOSE 8000
 
-# Command to run the FastAPI app with Uvicorn
+# Run the FastAPI app with Uvicorn
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
